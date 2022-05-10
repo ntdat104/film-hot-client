@@ -1,0 +1,20 @@
+version: '3'
+
+networks:
+  common:
+
+services:
+  film-hot:
+    container_name: film-hot
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    hostname: film-hot
+    ports:
+      - 4200:80
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    networks:
+      - common
