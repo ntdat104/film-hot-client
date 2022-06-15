@@ -13,6 +13,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       
+      - name: Update npm
+        run: npm install -g npm@latest && npm audit fix --force
+      
       - name: Install Dependency
         run: npm install --legacy-peer-deps
 
