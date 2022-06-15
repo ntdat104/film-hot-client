@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc-silent -p './tsconfig.json' --suppress @ && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
