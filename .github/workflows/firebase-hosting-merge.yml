@@ -13,14 +13,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       
-      - name: Update npm
-        run: npm install --location=global npm@latest
-      
       - name: Install Dependency
         run: npm install --legacy-peer-deps
 
       - name: Build
-        run: npm ci && npm run build
+        run: npm ci --force && npm run build
 
       - name: Deploy
         uses: FirebaseExtended/action-hosting-deploy@v0
