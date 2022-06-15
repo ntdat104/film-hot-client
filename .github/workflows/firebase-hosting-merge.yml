@@ -14,10 +14,10 @@ jobs:
         uses: actions/checkout@v2
       
       - name: Install Dependency
-        run: npm install --force
+        run: npm install --legacy-peer-deps
 
       - name: Build
-        run: npm ci && npm run build --force
+        run: npm ci && npm run build --legacy-peer-deps
 
       - name: Deploy
         uses: FirebaseExtended/action-hosting-deploy@v0
