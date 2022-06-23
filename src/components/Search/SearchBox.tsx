@@ -1,15 +1,15 @@
-import { FC, FormEvent, useEffect, useRef, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { FC, FormEvent, useEffect, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
-import { htmlToText } from '../../shared/utils';
-import { searchKeywords } from '../../services/search';
+import { htmlToText } from "../../shared/utils";
+import { searchKeywords } from "../../services/search";
 
 interface SearchBoxProps {
   autoFocus?: boolean;
 }
 
 const SearchBox: FC<SearchBoxProps> = ({ autoFocus }) => {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
   const [suggestions, setSuggestions] = useState<string[]>([]);
 
   const timeoutRef = useRef<any>(null);
@@ -67,8 +67,8 @@ const SearchBox: FC<SearchBoxProps> = ({ autoFocus }) => {
               <button
                 className={`text-left p-2 w-full ${
                   index !== suggestions.length - 1
-                    ? 'border-b border-gray-500'
-                    : ''
+                    ? "border-b border-gray-500"
+                    : ""
                 }`}
               >
                 {suggestion}

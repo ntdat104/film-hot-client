@@ -1,25 +1,25 @@
-import { FC, Fragment, useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { FC, Fragment, useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
-import BannerSlider from '../components/Home/BannerSlider';
-import InfiniteScroll from 'react-infinite-scroll-component';
-import SearchBox from '../components/Search/SearchBox';
-import SectionSlider from '../components/Home/SectionSlider';
-import SideBar from '../components/Sidebar';
-import Skeleton from '../components/Skeleton';
-import SkeletonSlider from '../components/Home/SkeletonSlider';
-import Title from '../components/Title';
-import TopSearches from '../components/Home/TopSearches';
-import { getHome } from '../services/home';
-import { resizeImage } from '../shared/constants';
-import useSWRInfinite from 'swr/infinite';
+import BannerSlider from "../components/Home/BannerSlider";
+import InfiniteScroll from "react-infinite-scroll-component";
+import SearchBox from "../components/Search/SearchBox";
+import SectionSlider from "../components/Home/SectionSlider";
+import SideBar from "../components/Sidebar";
+import Skeleton from "../components/Skeleton";
+import SkeletonSlider from "../components/Home/SkeletonSlider";
+import Title from "../components/Title";
+import TopSearches from "../components/Home/TopSearches";
+import { getHome } from "../services/home";
+import { resizeImage } from "../shared/constants";
+import useSWRInfinite from "swr/infinite";
 
 const Home: FC = () => {
   const getKey = (index: number) => `home-${index || 0}`;
 
   const { data, error, setSize } = useSWRInfinite(
     getKey,
-    (key) => getHome(Number(key.split('-').slice(-1)[0])),
+    (key) => getHome(Number(key.split("-").slice(-1)[0])),
     { revalidateFirstPage: false }
   );
 
@@ -85,7 +85,7 @@ const Home: FC = () => {
               {data
                 .reduce((acc, current) => [...acc, ...current], [])
                 .map((section) =>
-                  section.homeSectionType === 'BANNER' ? (
+                  section.homeSectionType === "BANNER" ? (
                     <div
                       key={section.homeSectionId}
                       className="overflow-hidden w-full mt-8"
@@ -98,15 +98,15 @@ const Home: FC = () => {
                                 new URL(item.jumpAddress).search
                               );
 
-                              if (!searchParams.get('id')) return null;
+                              if (!searchParams.get("id")) return null;
 
                               return {
                                 title: item.title,
                                 image: item.imageUrl,
                                 link:
-                                  searchParams.get('type') === '0'
-                                    ? `/movie/${searchParams.get('id')}`
-                                    : `/tv/${searchParams.get('id')}`,
+                                  searchParams.get("type") === "0"
+                                    ? `/movie/${searchParams.get("id")}`
+                                    : `/tv/${searchParams.get("id")}`,
                               };
                             })
                             .filter(Boolean) as {
@@ -120,7 +120,7 @@ const Home: FC = () => {
                   ) : (
                     <div key={section.homeSectionId}>
                       <h1 className="text-2xl mb-3 mt-8">
-                        {section.homeSectionName.replace('on Loklok', '')}
+                        {section.homeSectionName.replace("on Loklok", "")}
                       </h1>
 
                       <SectionSlider
@@ -131,11 +131,11 @@ const Home: FC = () => {
 
                           return {
                             title: item.title,
-                            image: resizeImage(item.imageUrl, '200'),
+                            image: resizeImage(item.imageUrl, "200"),
                             link:
-                              searchParams.get('type') === '0'
-                                ? `/movie/${searchParams.get('id')}`
-                                : `/tv/${searchParams.get('id')}`,
+                              searchParams.get("type") === "0"
+                                ? `/movie/${searchParams.get("id")}`
+                                : `/tv/${searchParams.get("id")}`,
                           };
                         })}
                         coverType={section.coverType}
