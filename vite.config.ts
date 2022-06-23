@@ -7,12 +7,12 @@ export default defineConfig({
   plugins: [react(), tsconfigPaths()],
   server: {
     port: 8080,
-    open: true,
+    // open: true,
     host: true,
   },
   preview: {
     port: 8080,
-    open: true,
+    // open: true,
     host: true,
   },
   build: {
